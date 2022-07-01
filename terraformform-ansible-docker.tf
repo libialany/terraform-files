@@ -38,7 +38,7 @@ resource "digitalocean_droplet" "site" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -u root -i '${self.ipv4_address},' --private-key ${var.pvt_key} playbook-docker-compose.yml"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i '${self.ipv4_address},' --private-key ${var.pvt_key} playbook-docker-compose.yml"
   }
 }
 
